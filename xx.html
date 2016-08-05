@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset='utf-8'/>
+    <style type="text/css">
+        img{
+            display: block;
+            margin: 0 auto;
+        }
+        #shouwang{
+            margin-top:10%;
+        }
+        #text{
+
+        }
+        #danmuku{
+            position: absolute;
+            left: 0;
+            top:0;
+            right:0;
+            bottom:0;
+        }
+        .cmt{
+            -webkit-transform: matrix3d(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1);
+            transform: matrix3d(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1);
+            -webkit-transform-origin: 0% 0%;
+            -ms-transform-origin: 0% 0%;
+            transform-origin: 0% 0%;
+            position: absolute;
+            padding: 3px 0 0 0;
+            margin: 0;
+            color: #fff;
+            font-family: SimHei,SimSun,Heiti,"MS Mincho","Meiryo","Microsoft YaHei",monospace;
+            font-size: 25px;
+            text-decoration: none;
+            text-shadow: -1px 0 #000,0 1px #000,1px 0 #000,0 -1px #000;
+            -webkit-text-size-adjust: none;
+            -ms-text-size-adjust: none;
+            text-size-adjust: none;
+            line-height: 100%;
+            letter-spacing: 0;
+            word-break: keep-all;
+            white-space: pre;
+        }
+    </style>
+    <script src="./commentCoreLibrary.js"></script>
+</head>
+<body>
+<img src="" id='shouwang'/>
+<img src="./gz.png" id='text'/>
+<div id='danmuku'></div>
+<!-- UY BEGIN -->
+<!-- UY END -->
+<script type="text/javascript" src='http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js'></script>
+<script type="text/javascript">
+    $(function(){
+        $('#shouwang').prop('src','./shouwang/16.png');
+
+        window.settings = {
+             danmakuUrl: 'http://danmu.aixifan.com/sanae/',
+             commentLifeTime: 7000
+         };
+         var CM = window.CM = new CommentManager(document.getElementById('danmuku')),
+             timeAxis = 1,
+             timer = null;
+
+         CM.init(); // 初始化
+
+          //载入弹幕列表
+         var danmakuList = [
+             {
+                 "mode":1,
+                 "text":"Hello AcFun",
+                 "stime":2,
+                 "size":20,
+                 "color":16731921
+             },
+         ];
+         CM.load(danmakuList);
+
+         // 插入弹幕
+         var someDanmakuAObj = {
+             "mode":1,
+             "text":"Hello CommentCoreLibrary",
+             "stime":5,
+             "size":10,
+             "color":0xff0000
+         };
+
+         CM.insert(someDanmakuAObj)
+         // 启动播放弹幕
+         CM.startTimer();
+
+         timer = setInterval(function(){
+             CM.time(timeAxis++);
+         },1000);
+
+    })
+</script>
+
+</body>
+</html>
