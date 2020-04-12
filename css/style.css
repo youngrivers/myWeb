@@ -203,7 +203,9 @@ ul {
 }
 
 .row {
-    position: relative
+    position: relative;
+    display: flex;
+    justify-content: center;
 }
 
 .row:after {
